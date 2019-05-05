@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from './components/Header';
 import List from './pages/List';
+import Overview from './pages/Overview';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class App extends Component {
@@ -10,8 +11,9 @@ class App extends Component {
         <Header title={"This is new title"}/>
         <Router>
             <Route path={'/list'} component={List}/>
+            <Route path={'/show/:id'} component={Overview}/>
         </Router>
-        <List />
+
     </div>);
   }
 }

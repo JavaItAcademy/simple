@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './index.css';
 class List extends Component {
   state = {
@@ -6,7 +7,6 @@ class List extends Component {
   };
 
   async componentWillMount() {
-    console.log('mounted');
     let response = await fetch('https://jsonplaceholder.typicode.com/posts');
     let json = await response.json();
     this.setState({data: json});
@@ -23,7 +23,9 @@ class List extends Component {
             {
                 this.state.data.map((item) => (
                     <div className = {'list-item'}>
-                        <div className = {'title'}>{item.title}</div>
+                        <Link to={'/show/' + item.id} className = {'title'}>
+                            {item.title}
+                        </Link>
                         <div className = {'body'}>{item.body}</div>
                     </div>
                 ))
